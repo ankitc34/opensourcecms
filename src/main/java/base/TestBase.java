@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import commonUtils.TestUtils;
+
 public class TestBase {
 	
 	public static WebDriver driver;
@@ -22,8 +24,8 @@ public class TestBase {
 		ch.merge(cap);
 		driver = new ChromeDriver(ch);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(TestUtils.Page_Load_TimeOut, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(TestUtils.Implicit_Wait, TimeUnit.SECONDS);
 		driver.get("https://s1.demo.opensourcecms.com/wordpress/");
 		
 		
