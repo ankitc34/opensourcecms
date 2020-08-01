@@ -10,9 +10,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TestBase {
 	
-	public static WebDriver dr;
+	public static WebDriver driver;
 	
-	public static WebDriver intitialization() {
+	public static void intitialization() {
 		System.setProperty("webdriver.chrome.driver", "D://selenium softwares/Browserdriver/chromedriver.exe");
 	
 		DesiredCapabilities cap = new DesiredCapabilities();
@@ -20,12 +20,12 @@ public class TestBase {
 		cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 		ChromeOptions ch = new ChromeOptions();
 		ch.merge(cap);
-		dr = new ChromeDriver(ch);
-		dr.manage().window().maximize();
-		dr.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-		dr.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		dr.get("https://s1.demo.opensourcecms.com/wordpress/");
-		return dr;
+		driver = new ChromeDriver(ch);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("https://s1.demo.opensourcecms.com/wordpress/");
+		
 		
 	}
 

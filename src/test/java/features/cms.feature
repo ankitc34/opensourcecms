@@ -8,8 +8,10 @@ Scenario Outline:
 	Then user must able to fill form and submit his details - <comment> , <name> , <email> and <website> 
 	Examples: 
 		|comment   |name   |email            | website              |
-		|"Hi Buddy"|"test1"|"test@gmail.com" |"http://www.test.com" |
+		|"Hi Neha" |"test1"|"test@gmail.com" |"http://www.test.com" |
 		|"Welcome" |"test2"|"test1@gmail.com"|"http://www.test1.com"|
+		
+		
 		
 		
 		

@@ -7,29 +7,31 @@ import org.testng.Assert;
 import base.TestBase;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import objectRepository.Cms_Page;
 import objectRepository.HelloWorld_Page;
 
 public class StepDefinition extends TestBase {
 
 	public static HelloWorld_Page hp;
+	public static Cms_Page cms;
 
 	@When("^user landed into opencms page$")
 	public void user_landed_into_opencms_page() {
-		hp = new HelloWorld_Page();
+		intitialization();
+		cms = new Cms_Page();
+		System.out.println(cms.getTitle());
+		Assert.assertEquals(cms.getTitle(), "opensourcecms – Just another WordPress site");
 
 	}
 
 	@When("^user click over \"([^\"]*)\" link$")
-	public void user_click_over_link(String arg1) {
-
-		hp.clickAtLink(arg1);
+	public void user_click_over_link(String arg1) throws InterruptedException {
+		hp = cms.clickAtLink(arg1);
 	}
 
 	@Then("^user landed into \"([^\"]*)\" page$")
 	public void user_landed_into_page(String arg1) throws Throwable {
-		String title = hp.getTitle();
-		System.out.println(title);
-		Assert.assertEquals(title, "Hello world! – opensourcecms");
+		Assert.assertEquals(hp.hpTitle(), arg1);
 	}
 
 	@Then("^user must able to fill form and submit his details - \"([^\"]*)\" , \"([^\"]*)\" , \"([^\"]*)\" and \"([^\"]*)\"$")
