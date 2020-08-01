@@ -27,10 +27,27 @@ public class HelloWorld_Page extends TestBase {
 	@FindBy(css = "input#submit")
 	public WebElement submit;
 
+	@FindBy(xpath = "(//div[@class = 'comment-content'])[2]")
+	public WebElement updatedComment;
+
 	public String hpTitle() {
 		System.out.println(driver.getTitle());
 		return driver.getTitle();
 
+	}
+
+	public void submitForm(String arg1, String arg2, String arg3, String arg4) {
+
+		comment.sendKeys(arg1);
+		author.sendKeys(arg2);
+		email.sendKeys(arg3);
+		url.sendKeys(arg4);
+		submit.click();
+	}
+
+	public String testUpdate() {
+		System.out.println(updatedComment.getText());
+		return updatedComment.getText();
 	}
 
 }

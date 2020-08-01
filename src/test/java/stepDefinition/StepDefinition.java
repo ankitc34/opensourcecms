@@ -38,11 +38,9 @@ public class StepDefinition extends TestBase {
 	public void user_must_able_to_fill_form_and_submit_his_details_and(String arg1, String arg2, String arg3,
 			String arg4) throws Throwable {
 
-		hp.comment.sendKeys(arg1);
-		hp.author.sendKeys(arg2);
-		hp.email.sendKeys(arg3);
-		hp.url.sendKeys(arg4);
-		hp.submit.click();
+		hp.submitForm(arg1, arg2, arg3, arg4);
+		Assert.assertEquals(hp.testUpdate(), arg1);
+		
 	}
 
 }
