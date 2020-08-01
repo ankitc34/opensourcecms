@@ -15,16 +15,28 @@ public class Cms_Page extends TestBase {
 	@FindBy(xpath = "(//li/a[text() = \"Hello world!\"])[1]")
 	public WebElement helloWorld;
 
+	@FindBy(linkText = "Log in")
+	public WebElement login;
+
 	public String getTitle() {
 		return driver.getTitle();
 	}
 
-	public HelloWorld_Page clickAtLink(String arg1) throws InterruptedException {
+	public HelloWorld_Page clickAtHelloWorldLink() throws InterruptedException {
 
 		helloWorld.click();
 		Thread.sleep(2000);
 
 		return new HelloWorld_Page();
+
+	}
+
+	public Login_Page clickAtLoginLink() throws InterruptedException {
+
+		login.click();
+		Thread.sleep(2000);
+
+		return new Login_Page();
 
 	}
 
