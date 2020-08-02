@@ -1,5 +1,7 @@
 package stepDefinition;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -14,13 +16,17 @@ import objectRepository.Login_Page;
 
 public class StepDefinition extends TestBase {
 
+	public StepDefinition() throws IOException {
+		super();
+	}
+
 	public static HelloWorld_Page hp;
 	public static Cms_Page cms;
 	public static TestUtils utils;
 	public static Login_Page login;
 
 	@When("^user landed into opencms page$")
-	public void user_landed_into_opencms_page() {
+	public void user_landed_into_opencms_page() throws IOException {
 		intitialization();
 		cms = new Cms_Page();
 		System.out.println(cms.getTitle());
@@ -29,7 +35,7 @@ public class StepDefinition extends TestBase {
 	}
 
 	@When("^user click over \"([^\"]*)\" link$")
-	public void user_click_over_link(String arg1) throws InterruptedException {
+	public void user_click_over_link(String arg1) throws InterruptedException, IOException {
 		System.out.println(arg1);
 		if (arg1.equalsIgnoreCase("Hello world!"))
 			hp = cms.clickAtHelloWorldLink();

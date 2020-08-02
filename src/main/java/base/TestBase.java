@@ -1,5 +1,9 @@
 package base;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -13,6 +17,13 @@ import commonUtils.TestUtils;
 public class TestBase {
 	
 	public static WebDriver driver;
+	public static Properties prop;
+	
+	public TestBase() throws IOException {
+		FileInputStream fis = new FileInputStream("src/main/resources/resources/config.properties");
+		prop = new Properties();
+		prop.load(fis);
+	}
 	
 	public static void intitialization() {
 		System.setProperty("webdriver.chrome.driver", "D://selenium softwares/Browserdriver/chromedriver.exe");
@@ -26,7 +37,7 @@ public class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(TestUtils.Page_Load_TimeOut, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtils.Implicit_Wait, TimeUnit.SECONDS);
-		driver.get("https://s1.demo.opensourcecms.com/wordpress/");
+		driver.get(prop.getProperty("url"));
 		
 		
 	}

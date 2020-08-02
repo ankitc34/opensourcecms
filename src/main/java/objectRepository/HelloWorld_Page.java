@@ -1,5 +1,7 @@
 package objectRepository;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,7 +10,7 @@ import base.TestBase;
 
 public class HelloWorld_Page extends TestBase {
 
-	public HelloWorld_Page() {
+	public HelloWorld_Page()throws IOException {
 		PageFactory.initElements(driver, this);
 	}
 
